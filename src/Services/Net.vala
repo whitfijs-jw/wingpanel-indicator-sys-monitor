@@ -19,7 +19,7 @@
  * Authored by: Tudor Plugaru <plugaru.tudor@gmail.com>
  */
 
-public class SysMonitor.Services.Net  : GLib.Object {
+public class SysMonitor.Services.Net : GLib.Object {
     private int _bytes_in;
     private int _bytes_in_old;
     private bool control;
@@ -39,7 +39,7 @@ public class SysMonitor.Services.Net  : GLib.Object {
         if (control == false) {
             control = true;
             update_bytes_total ();
-        } else  {
+        } else {
             control = false;
         }
         int[] ret;

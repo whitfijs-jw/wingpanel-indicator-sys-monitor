@@ -33,7 +33,8 @@ namespace SysMonitor.Services {
         public abstract void initialize (int monitor, int panel_height) throws GLib.Error;
         public abstract void remember_focused_window () throws GLib.Error;
         public abstract void restore_focused_window () throws GLib.Error;
-        public abstract bool begin_grab_focused_window (int x, int y, int button, uint time, uint state) throws GLib.Error;
+        public abstract bool begin_grab_focused_window (int x, int y, int button,
+                                                        uint time, uint state) throws GLib.Error;
     }
 
     public class BackgroundManager : Object {

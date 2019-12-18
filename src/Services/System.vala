@@ -19,7 +19,7 @@
  * Authored by: Tudor Plugaru <plugaru.tudor@gmail.com>
  */
 
-public class SysMonitor.Services.System  : GLib.Object {
+public class SysMonitor.Services.System : GLib.Object {
     private string _uptime;
     private float _network_up;
     private float _network_down;

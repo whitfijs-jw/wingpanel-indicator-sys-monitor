@@ -19,7 +19,7 @@
  * Authored by: Tudor Plugaru <plugaru.tudor@gmail.com>
  */
 
-public class SysMonitor.Services.CPU  : GLib.Object {
+public class SysMonitor.Services.CPU : GLib.Object {
     private float last_total;
     private float last_used;
 
@@ -76,7 +76,7 @@ public class SysMonitor.Services.CPU  : GLib.Object {
         _frequency = (double)maxcur;
     }
 
-    private void update_temperature() {
+    private void update_temperature () {
         string pattern = "x86_pkg_temp";
         double max_temp = 0;
 
@@ -90,9 +90,9 @@ public class SysMonitor.Services.CPU  : GLib.Object {
                 string name = file_info.get_name ();
                 try {
 
-                    FileUtils.get_contents(@"/sys/class/thermal/$name/type", out value);
+                    FileUtils.get_contents (@"/sys/class/thermal/$name/type", out value);
 
-                    if (value.contains(pattern)) {
+                    if (value.contains (pattern)) {
                         //debug("x86_pkg_temp: %f", read_core_temp (name));
                         max_temp = read_core_temp (name);
                     }
@@ -107,16 +107,16 @@ public class SysMonitor.Services.CPU  : GLib.Object {
         _temperature = max_temp;
     }
 
-    private static double read_core_temp(string what) {
+    private static double read_core_temp (string what) {
         string value;
         try {
-            FileUtils.get_contents(@"/sys/class/thermal/$what/temp", out value);
+            FileUtils.get_contents (@"/sys/class/thermal/$what/temp", out value);
         } catch (Error e) {
              value = "0";
         }
 
 
-        return double.parse(value) / 1000.0;
+        return double.parse (value) / 1000.0;
     }
 
     private static double read (uint cpu, string what) {

@@ -19,32 +19,32 @@
  * Authored by: Tudor Plugaru <plugaru.tudor@gmail.com>
  */
 
-public class SysMonitor.Services.Utils  : GLib.Object {
+public class SysMonitor.Services.Utils : GLib.Object {
     public Utils () {
     }
 
     construct { }
 
     public static string format_temp (double val) {
-        const string units = "{} C";
+        const string UNITS = "{} C";
 
         // 4 significant digits
-        var pattern = _ (units).replace ("{}",
-                                         val <   9.95 ? "%.1f" :
-                                         val <  99.5  ? "%.0f" :
-                                         val < 999.5  ? "%.0f" : "%.0f");
+        var pattern = _ (UNITS).replace ("{}",
+                                         val < 9.95 ? "%.1f" :
+                                         val < 99.5 ? "%.0f" :
+                                         val < 999.5 ? "%.0f" : "%.0f");
 
         return pattern.printf (val);
     }
 
     public static string format_size (double val) {
-        const string[] units = {
+        const string[] UNITS = {
             N_ ("{} kB"),
             N_ ("{} MB"),
             N_ ("{} GB")
         };
         int index = -1;
-        while (index + 1 < units.length && (val >= 1000 || index < 0)) {
+        while (index + 1 < UNITS.length && (val >= 1000 || index < 0)) {
             val /= 1000;
             ++index;
         }
@@ -53,21 +53,21 @@ public class SysMonitor.Services.Utils  : GLib.Object {
         }
 
         // 4 significant digits
-        var pattern = _ (units[index]).replace ("{}",
-                                                val <   9.95 ? "%.1f" :
-                                                val <  99.5  ? "%.0f" :
-                                                val < 999.5  ? "%.0f" : "%.0f");
+        var pattern = _ (UNITS[index]).replace ("{}",
+                                                val < 9.95 ? "%.1f" :
+                                                val < 99.5 ? "%.0f" :
+                                                val < 999.5 ? "%.0f" : "%.0f");
         return pattern.printf (val);
     }
 
     public static string format_frequency (double val) {
-        const string[] units = {
+        const string[] UNITS = {
             N_ ("{} kHz"),
             N_ ("{} MHz"),
             N_ ("{} GHz")
         };
         int index = -1;
-        while (index + 1 < units.length && (val >= 1000 || index < 0)) {
+        while (index + 1 < UNITS.length && (val >= 1000 || index < 0)) {
             val /= 1000;
             ++index;
         }
@@ -76,10 +76,10 @@ public class SysMonitor.Services.Utils  : GLib.Object {
         }
 
         // 4 significant digits
-        var pattern = _ (units[index]).replace ("{}",
-                                                val <   9.95 ? "%.1f" :
-                                                val <  99.5  ? "%.0f" :
-                                                val < 999.5  ? "%.0f" : "%.0f");
+        var pattern = _ (UNITS[index]).replace ("{}",
+                                                val < 9.95 ? "%.1f" :
+                                                val < 99.5 ? "%.0f" :
+                                                val < 999.5 ? "%.0f" : "%.0f");
         return pattern.printf (val);
     }
 
@@ -91,20 +91,20 @@ public class SysMonitor.Services.Utils  : GLib.Object {
         string speed = "";
         while (len >= 1024 && order < sizes.length - 1) {
             order++;
-            len = len/1024;
+            len = len / 1024;
         }
         if (bytes < 0) {
             len = 0;
             order = 0;
         }
         string unit = sizes[order];
-        if (in_bits == true){
-            len = len*8;
+        if (in_bits == true) {
+            len = len * 8;
             unit = sizes_in_bits[order];
         }
         if (round == true) {
             speed = "%3.0f %s".printf (len, unit);
-        } else  {
+        } else {
             speed = "%3.2f %s".printf (len, unit);
         }
 

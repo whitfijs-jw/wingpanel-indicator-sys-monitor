@@ -19,7 +19,7 @@
  * Authored by: Tudor Plugaru <plugaru.tudor@gmail.com>
  */
 
-public class SysMonitor.Services.Memory  : GLib.Object {
+public class SysMonitor.Services.Memory : GLib.Object {
     private int _percentage_used;
     private double _total;
     private double _used;
