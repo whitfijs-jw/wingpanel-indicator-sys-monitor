@@ -36,7 +36,7 @@ public class SysMonitor.Widgets.MainViewRow : Gtk.Grid {
         value_label.halign = Gtk.Align.END;
         value_label.margin_end = 9;
 
-        attach (text_label,  1, 0, 1, 1);
+        attach (text_label, 1, 0, 1, 1);
         attach (value_label, 2, 0, 1, 1);
     }
 
@@ -49,4 +49,3 @@ public class SysMonitor.Widgets.MainViewRow : Gtk.Grid {
         value_label.set_justify (Gtk.Justification.FILL);
     }
 }
-

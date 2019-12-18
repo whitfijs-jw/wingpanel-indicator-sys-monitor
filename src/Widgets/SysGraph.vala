@@ -103,7 +103,7 @@ public class SysMonitor.Widgets.SysLineGraph : SysMonitor.Widgets.SysGraph {
         cr.set_source_rgba (value_color[0], value_color[1], value_color[2], value_color[3]);
         cr.move_to (xb, yb);
         if (_queue.length > 0) {
-            for (int i=0; i<_queue.length; i++) {
+            for (int i = 0; i < _queue.length; i++) {
                 var percent_height = (int)(((double)_queue.peek_nth (i) / 100.0) * height);
                 var px = last_x - 1;
                 var py = height - percent_height;
@@ -117,4 +117,3 @@ public class SysMonitor.Widgets.SysLineGraph : SysMonitor.Widgets.SysGraph {
         return false;
     }
 }
-

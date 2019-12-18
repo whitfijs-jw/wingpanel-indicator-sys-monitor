@@ -37,7 +37,7 @@ public class SysMonitor.Widgets.PopoverWidget : Gtk.Grid {
 
         stack = new Gtk.Stack ();
         stack.hexpand = true;
-        stack.add_titled (main_view,     main_view.name,     _ ("Main"));
+        stack.add_titled (main_view, main_view.name, _ ("Main"));
         stack.add_titled (settings_view, settings_view.name, _ ("Settings"));
 
         var stack_switcher = new Gtk.StackSwitcher ();
@@ -62,11 +62,11 @@ public class SysMonitor.Widgets.PopoverWidget : Gtk.Grid {
         var separator_end = new Wingpanel.Widgets.Separator ();
         separator_end.hexpand = true;
 
-        attach (stack_switcher,  0, 0, 1, 1);
+        attach (stack_switcher, 0, 0, 1, 1);
         attach (separator_start, 0, 1, 1, 1);
-        attach (stack,           0, 2, 1, 1);
-        attach (separator_end,   0, 3, 1, 1);
-        attach (quit_button,     0, 4, 1, 1);
+        attach (stack, 0, 2, 1, 1);
+        attach (separator_end, 0, 3, 1, 1);
+        attach (quit_button, 0, 4, 1, 1);
     }
 
     public void set_main_view () {
@@ -94,6 +94,6 @@ public class SysMonitor.Widgets.PopoverWidget : Gtk.Grid {
     }
 
     public void update_cpu_temp (double temp) {
-        main_view.update_cpu_temp(temp);
+        main_view.update_cpu_temp (temp);
     }
 }
